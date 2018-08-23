@@ -1,0 +1,19 @@
+{
+  "name": "palm-tree",
+  "version": "1.0.0",
+  "description": "Microservice for creating hierarchy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thepiperpied/palm-tree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thepiperpied/palm-tree/issues"
+  },
+  "homepage": "https://github.com/thepiperpied/palm-tree#readme"
+}
