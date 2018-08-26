@@ -4,6 +4,7 @@
   "description": "Microservice for creating hierarchy.",
   "main": "app.js",
   "scripts": {
+    "start": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +18,22 @@
   },
   "homepage": "https://github.com/thepiperpied/palm-tree#readme",
   "dependencies": {
+    "apollo-boost": "^0.1.14",
+    "apollo-cache-inmemory": "^1.2.8",
+    "apollo-client": "^2.4.0",
+    "apollo-link-http": "^1.5.4",
+    "apollo-server": "^2.0.5",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
-    "graphql": "^0.13.2"
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "graphql-tools": "^3.1.1",
+    "neo4j-driver": "^1.6.3",
+    "neo4j-graphql-js": "^0.1.33",
+    "node-fetch": "^2.2.0",
+    "nodemon": "^1.18.3"
   }
 }
