@@ -2,8 +2,9 @@ version: '3'
 
 services:
 
-  neo4j:
+  db:
     build: ./neo4j
+    image: palm-tree/db
     ports:
       - 7474:7474
       - 7687:7687
@@ -15,9 +16,10 @@ services:
 
   api:
     build: .
+    image: palm-tree/api:beta
     ports:
       - 4000:4000
     links:
-    - neo4j
+    - db
     depends_on:
-    - neo4j
+    - db
