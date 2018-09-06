@@ -9,16 +9,14 @@ type Department {
   id: ID!
   name: String
   level: Int
-  has(first: Int = 10, offset: Int = 0, levelTo: Int): [Department] @relation(name: "HAS", direction: "OUT")
-  parentOf(first: Int = 10, offset: Int = 0): [Department] @relation(name: "PARENT_OF", direction: "OUT")
+  has: [Position] @relation(name: "HAS", direction: "OUT")
+  childrenOf: [Department] @relation(name: "CHILDREN_OF", direction: "IN")
 }
 type Position {
-  id: ID!
+  id: ID! 
   name: String
   level: Int
   type: String
-  of(first: Int = 10, offset: Int = 0, levelTo: Int): [Position] @relation(name: "OF", direction: "OUT")
-  parentOf(first: Int = 10, offset: Int = 0): [Position] @relation(name: "PARENT_OF", direction: "OUT")
 }
 type Query {
     universities(id: ID, level: Int, first: Int = 10, offset: Int = 0): [University]
@@ -33,4 +31,4 @@ export const resolvers = {
     departments: neo4jgraphql,
     positions: neo4jgraphql,
   }
-};
+}; 
