@@ -9,14 +9,16 @@ type Department {
   id: ID!
   name: String
   level: Int
-  has: [Position] @relation(name: "HAS", direction: "OUT")
-  childrenOf: [Department] @relation(name: "CHILDREN_OF", direction: "IN")
+  children: [Department] @cypher(statement: ""CHILD_DEPT", direction: "OUT"")
+  parents: [Department] @relation(name: "CHILD_DEPT", direction: "IN")
 }
 type Position {
   id: ID! 
   name: String
   level: Int
-  type: String
+  type: String,
+  positionOf: [Department] @relation(name: "POSITION_OF", direction: "OUT")
+  fromDepartment: [Department] @relation(name: "HAS_POSITION", direction: "IN")
 }
 type Query {
     universities(id: ID, level: Int, first: Int = 10, offset: Int = 0): [University]
