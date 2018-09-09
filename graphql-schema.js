@@ -5,21 +5,32 @@ type University {
   id: ID!
   level: Int
 }
+
 type Department {
   id: ID!
   name: String
   level: Int
-  children: [Department] @cypher(statement: ""CHILD_DEPT", direction: "OUT"")
-  parents: [Department] @relation(name: "CHILD_DEPT", direction: "IN")
+  children: [Department] @relation(name: "CHILD", direction: "OUT")
+  parent: [Department] @relation(name: "CHILD", direction: "IN")
 }
+
 type Position {
   id: ID! 
   name: String
   level: Int
-  type: String,
-  positionOf: [Department] @relation(name: "POSITION_OF", direction: "OUT")
-  fromDepartment: [Department] @relation(name: "HAS_POSITION", direction: "IN")
+  type: String
 }
+
+type Mutation {
+  AddDepartmentChildren(fromDepartmentID: ID!, toDepartmentID: ID!): Department @cypher(
+  statement:"""
+    MATCH (from:Department {id: $fromDepartmentID})
+    MATCH (to:Department {id: $toDepartmentID})
+    MERGE (from)-[:CHILD]->(to)
+    RETURN to.id
+    """)
+}
+
 type Query {
     universities(id: ID, level: Int, first: Int = 10, offset: Int = 0): [University]
     departments(id: ID, name: String, level: Int, first: Int = 10, offset: Int = 0): [Department]

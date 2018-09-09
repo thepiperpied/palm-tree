@@ -7,7 +7,7 @@
     "build": "npx babel . --out-dir ./build --ignore './node_modules'",
     "prebuild": "rm -rf build/*",
     "start": "NODE_ENV=production node ./build/app.js",
-    "prestart": "npm build",
+    "prestart": "npm run build",
     "start-dev": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
